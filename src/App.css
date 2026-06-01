@@ -1,0 +1,394 @@
+.hero-section {
+  padding-top: 108px;
+  padding-bottom: 88px;
+  background: #fafaf8;
+  position: relative;
+  overflow: hidden;
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      circle at 78% 18%,
+      rgba(200, 169, 110, 0.08) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 12% 82%,
+      rgba(26, 26, 26, 0.04) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-section .container-xl {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-tagline {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c8a96e;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.hero-name {
+  font-family: "Playfair Display", serif !important;
+  font-size: clamp(46px, 6vw, 74px) !important;
+  font-weight: 700 !important;
+  line-height: 1.07 !important;
+  color: #1a1a1a !important;
+  margin-bottom: 20px !important;
+  letter-spacing: -0.01em;
+}
+
+.hero-description {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.88;
+  max-width: 470px;
+  margin-bottom: 36px;
+}
+
+.hero-stat-card {
+  background: #fff;
+  border: 1.5px solid #e8e4dc;
+  border-radius: 13px;
+  padding: 18px 26px;
+  text-align: center;
+  min-width: 108px;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+.hero-stat-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #c8a96e, #e8c98e);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  border-radius: 0 0 13px 13px;
+}
+.hero-stat-card:hover {
+  transform: translateY(-5px);
+  border-color: #c8a96e;
+  box-shadow: 0 12px 40px rgba(200, 169, 110, 0.15);
+}
+.hero-stat-card:hover::after {
+  transform: scaleX(1);
+}
+.hero-stat-value {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1;
+  display: block;
+}
+.hero-stat-label {
+  font-size: 11px;
+  color: #999;
+  margin-top: 5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  display: block;
+}
+
+.hero-btn-primary {
+  background: #1a1a1a !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  padding: 13px 34px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  font-family: "DM Sans", sans-serif !important;
+  box-shadow: none !important;
+  border: none !important;
+  transition: all 0.25s ease !important;
+}
+.hero-btn-primary:hover {
+  background: #c8a96e !important;
+  color: #1a1a1a !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(200, 169, 110, 0.3) !important;
+}
+.hero-btn-outline {
+  background: transparent !important;
+  color: #1a1a1a !important;
+  border: 1.5px solid #1a1a1a !important;
+  border-radius: 10px !important;
+  padding: 12px 28px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  font-family: "DM Sans", sans-serif !important;
+  box-shadow: none !important;
+  transition: all 0.25s ease !important;
+}
+.hero-btn-outline:hover {
+  background: #1a1a1a !important;
+  color: #fff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(26, 26, 26, 0.15) !important;
+}
+
+.hero-photo-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+}
+
+/* Float animation */
+@keyframes cardFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-11px);
+  }
+}
+@keyframes shadowPulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.17))
+      drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+  }
+  50% {
+    filter: drop-shadow(0 32px 56px rgba(0, 0, 0, 0.23))
+      drop-shadow(0 8px 20px rgba(0, 0, 0, 0.13));
+  }
+}
+.hero-card-float {
+  animation:
+    cardFloat 5s ease-in-out infinite,
+    shadowPulse 5s ease-in-out infinite;
+  border-radius: 16px;
+}
+.hero-card-float:hover {
+  animation-play-state: paused;
+}
+
+/* Photo card — overflow:hidden clips photo, badge is inside */
+.hero-photo-card {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative; /* badge positioned relative to THIS */
+  background: #d4d1ca;
+}
+
+.hero-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.65s ease;
+}
+.hero-photo-card:hover .hero-photo-img {
+  transform: scale(1.04);
+}
+
+/* Dark bottom gradient — "down effect" */
+.hero-photo-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(
+    to top,
+    rgba(15, 15, 15, 0.85) 0%,
+    rgba(15, 15, 15, 0.3) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Continuous blink — smooth opacity pulse, never stops */
+@keyframes continuousBlink {
+  0% {
+    opacity: 1;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  }
+}
+
+/* Outer ring pulse on the icon — ripple effect */
+@keyframes ringPulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(60, 60, 60, 0.35);
+  }
+  60% {
+    box-shadow: 0 0 0 5px rgba(60, 60, 60, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0px rgba(60, 60, 60, 0);
+  }
+}
+
+.hero-badge {
+  /* INSIDE .hero-photo-card — stays within the photo */
+  position: absolute;
+  bottom: 20px;
+  left: 18px;
+  z-index: 5; /* above the fade overlay */
+
+  /* White card */
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 9px 14px 9px 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid rgba(220, 217, 210, 0.9);
+  min-width: 170px;
+
+  /* Continuously blinks — never stops */
+  animation: continuousBlink 1.5s ease-in-out infinite;
+}
+
+.hero-badge-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Outer gear ring — thick dashed border gives the cog/gear
+     jagged-tooth appearance matching the screenshot icon */
+  border-radius: 50%;
+  border: 3px dashed #888;
+  background: transparent;
+
+  /* Ripple pulse on the outer ring — adds life without rotating */
+  animation: ringPulse 1.5s ease-out infinite;
+}
+
+/* Inner dark circle — the filled disc inside the gear */
+.hero-badge-icon::before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #2a2a2a;
+  z-index: 1;
+}
+
+/* White checkmark ✓ drawn with CSS borders — NO rotation on icon */
+.hero-badge-icon::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 6px;
+  height: 10px;
+  border-right: 2.5px solid #fff;
+  border-bottom: 2.5px solid #fff;
+  transform: rotate(38deg) translate(0px, -2px);
+  margin-top: 2px;
+}
+
+.hero-badge-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-badge-title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  display: block;
+}
+
+.hero-badge-sub {
+  font-family: "DM Sans", sans-serif;
+  font-size: 9.5px;
+  color: #b0aba2;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  white-space: nowrap;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .hero-section {
+    padding-top: 90px;
+    padding-bottom: 60px;
+    text-align: center;
+  }
+  .hero-tagline {
+    justify-content: center;
+  }
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-ctas {
+    justify-content: center;
+  }
+  .hero-stats-row {
+    justify-content: center;
+  }
+  .hero-photo-wrapper {
+    margin: 0 auto;
+  }
+}
+@media (max-width: 576px) {
+  .hero-name {
+    font-size: clamp(38px, 11vw, 52px) !important;
+  }
+  .hero-stat-card {
+    padding: 14px 18px;
+    min-width: 88px;
+  }
+  .hero-badge {
+    bottom: 14px;
+    left: 12px;
+    min-width: 152px;
+  }
+  .hero-badge-icon {
+    width: 30px;
+    height: 30px;
+  }
+  .hero-badge-icon::before {
+    width: 20px;
+    height: 20px;
+  }
+}
